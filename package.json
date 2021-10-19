@@ -1,6 +1,6 @@
 {
   "name": "see-this-and-drink-water-telegram-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "「見字飲水 Telegram Bot」會喺每日嘅香港時間上午10點至夜晚9點每個鐘提你飲一次水。",
   "dependencies": {
     "serverless-python-requirements": "^5.1.1"
