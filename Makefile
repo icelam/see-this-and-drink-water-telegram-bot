@@ -1,4 +1,7 @@
-.PHONY: create-venv clean-venv test-with-venv-local test-with-venv first-release release
+.PHONY: create-venv clean-venv test-with-venv-local test-with-venv first-release release lint
+
+INIT_ENVIRONMENT_VARIABLE_SCRIPT=./scripts/load-environment-variables.sh
+VENV_ACTIVATE_PATH=venv/bin/activate
 
 # Init new virtual environment
 create-venv:
@@ -11,9 +14,9 @@ clean-venv:
 # Test with environment variables saved in .env.local or .env (if .env.local does not exist)
 test-with-venv:
 	( \
-    . venv/bin/activate; \
+    . ${VENV_ACTIVATE_PATH}; \
     pip install -r requirements.txt; \
-    . load-environment-variables.sh; \
+    . ${INIT_ENVIRONMENT_VARIABLE_SCRIPT}; \
     cd src; \
     python -c "import handler; handler.send_message('', '')"; \
   )
@@ -21,7 +24,7 @@ test-with-venv:
 # Run pylint checking
 lint:
 	( \
-    . venv/bin/activate; \
+    . ${VENV_ACTIVATE_PATH}; \
     pip install -r requirements.txt; \
     pylint src/handler.py \
   )
@@ -29,7 +32,7 @@ lint:
 # Deploy to AWS lambda
 deploy:
 	( \
-		. load-environment-variables.sh; \
+		. ${INIT_ENVIRONMENT_VARIABLE_SCRIPT}; \
 		serverless deploy --aws-profile serverless; \
 	)
 
