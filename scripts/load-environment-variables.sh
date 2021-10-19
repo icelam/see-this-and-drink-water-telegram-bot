@@ -1,3 +1,5 @@
+# For exporting environment variables from .env files via Makefile
+
 LOCAL_ENV_FILE=.env.local
 ENV_FILE=.env
 
