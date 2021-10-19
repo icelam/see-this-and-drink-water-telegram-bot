@@ -14,7 +14,7 @@ provider:
 
 functions:
   cron:
-    handler: handler.send_message
+    handler: src/handler.send_message
     events:
       # Invoke Lambda function at 10:00 - 21:00 (UTC+8) every
       # Syntax reference: https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchevents-expressions.html
@@ -24,7 +24,7 @@ package:
   exclude:
     - venv/**
     - node_modules/**
-    - __pycache__/**
+    - '**/__pycache__/**'
     - .github/**
     - .editorconfig
     - .nvmrc
