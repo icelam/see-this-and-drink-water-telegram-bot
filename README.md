@@ -68,11 +68,11 @@ Save a copy of `.env`  and name it as `.env.local`, place your Telegram bot toke
 2. Use the command `\newbot` and choose a name and username for your bot.
 3. `@BotFather` will return you the token of the bot created. Remember to keep it safe!
 
-##### 2. How to get Telegram channel / group ID
+##### 2. How to get a Telegram chat ID
 
-1. Add the bot created in previous step to a Telegram channel / group.
-2. Send a random message to the channel / group, and visit https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
-3. Look at the API response, `result[0]['channel_post']['chat']['id']` or `result[0]['message']['chat']['id']` should contains the ID of the channel / group. Remember to copy the `-` prefix.
+1. Send a `/start` command to the telegram bot created in the previous step
+2. Visit https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
+3. Look at the API response, `result[0]['message']['chat']['id']` should contains ID of the chat. Remember to copy the `-` prefix if exists.
 
 ##### 3. Test if Bot token and Chat ID is correct or not
 
