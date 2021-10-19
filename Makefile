@@ -17,6 +17,14 @@ test-with-venv:
     python -c "import handler; handler.send_message('', '')"; \
   )
 
+# Run pylint checking
+test-with-venv:
+	( \
+    . venv/bin/activate; \
+    pip install -r requirements.txt; \
+    pylint handler.py \
+  )
+
 # Deploy to AWS lambda
 deploy:
 	( \
