@@ -107,7 +107,10 @@ serverless deploy --aws-profile <PROFILE_NAME>
 #### Settings
 
 ##### Add / Edit bot messages
-All messages are stored in `messages.txt`, and will be randomly picked when handler is triggered. To update the message sets, simply edit and save the file. Re-deployment is needed for changes to take effect.
+All messages are stored in `app/messages.txt`, and will be randomly picked when handler is triggered. To update the message sets, simply edit and save the file. Re-deployment is needed for changes to take effect.
+
+##### Add / Edit stickers
+All sticker IDs are stored in `app/stickers.txt`, and will be randomly picked when handler is triggered. To update the sticker sets, you will need to get the sticker ID by sending stickers to the created bot. Visit https://api.telegram.org/bot<BOT_TOKEN>/getUpdates, stickers ID can be found in the API reponse node `result[n]['message']['sticker']['file_id']`. Re-deployment is needed for changes to take effect.
 
 ##### Edit bot schedule
 
