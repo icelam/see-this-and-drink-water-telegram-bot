@@ -2,6 +2,7 @@
 
 INIT_ENVIRONMENT_VARIABLE_SCRIPT=./scripts/load-environment-variables.sh
 VENV_ACTIVATE_PATH=venv/bin/activate
+APP_FOLDER=app/
 
 # Init new virtual environment
 create-venv:
@@ -17,7 +18,7 @@ test-with-venv:
     . ${VENV_ACTIVATE_PATH}; \
     pip install -r requirements.txt; \
     . ${INIT_ENVIRONMENT_VARIABLE_SCRIPT}; \
-    cd src; \
+    cd ${APP_FOLDER}; \
     python -c "import handler; handler.send_message('', '')"; \
   )
 
@@ -26,7 +27,7 @@ lint:
 	( \
     . ${VENV_ACTIVATE_PATH}; \
     pip install -r requirements.txt; \
-    pylint src/handler.py \
+    pylint ${APP_FOLDER} \
   )
 
 # Deploy to AWS lambda
