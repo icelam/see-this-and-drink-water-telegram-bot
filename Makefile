@@ -18,8 +18,7 @@ test-with-venv:
     . ${VENV_ACTIVATE_PATH}; \
     pip install -r requirements.txt; \
     . ${INIT_ENVIRONMENT_VARIABLE_SCRIPT}; \
-    cd ${APP_FOLDER}; \
-    python -c "import handler; handler.send_message('', '')"; \
+    serverless invoke local -f cron; \
   )
 
 # Run pylint checking

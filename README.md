@@ -123,7 +123,7 @@ Run the following command inside virtual environment:
 . load-environment-variables.sh
 
 # Execute handler
-python -c "import handler; handler.send_message('', '')"
+serverless invoke local -f cron
 ```
 
 #### Others
