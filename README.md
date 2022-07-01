@@ -8,7 +8,7 @@
 
 ### Tech Stack
 * Python 3
-* [Serverless@2.63.0](https://www.npmjs.com/package/serverless)
+* [Serverless](https://www.npmjs.com/package/serverless)
 * AWS Lambda
 * AWS CloudFormation - Used by Serverless when doing deployment
 * AWS CloudWatch - Automatically Setup by Serverless when doing deployment
@@ -68,11 +68,11 @@ Save a copy of `.env`  and name it as `.env.local`, place your Telegram bot toke
 2. Use the command `\newbot` and choose a name and username for your bot.
 3. `@BotFather` will return you the token of the bot created. Remember to keep it safe!
 
-##### 2. How to get Telegram channel / group ID
+##### 2. How to get a Telegram chat ID
 
-1. Add the bot created in previous step to a Telegram channel / group.
-2. Send a random message to the channel / group, and visit https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
-3. Look at the API response, `result[0]['channel_post']['chat']['id']` or `result[0]['message']['chat']['id']` should contains the ID of the channel / group. Remember to copy the `-` prefix.
+1. Send a `/start` command to the telegram bot created in the previous step
+2. Visit `https://api.telegram.org/bot<BOT_TOKEN>/getUpdates`
+3. Look at the API response, `result[0]['message']['chat']['id']` should contains ID of the chat. Remember to copy the `-` prefix if exists.
 
 ##### 3. Test if Bot token and Chat ID is correct or not
 
@@ -107,7 +107,10 @@ serverless deploy --aws-profile <PROFILE_NAME>
 #### Settings
 
 ##### Add / Edit bot messages
-All messages are stored in `messages.txt`, and will be randomly picked when handler is triggered. To update the message sets, simply edit and save the file. Re-deployment is needed for changes to take effect.
+All messages are stored in `app/messages.txt`, and will be randomly picked when handler is triggered. To update the message sets, simply edit and save the file. Re-deployment is needed for changes to take effect.
+
+##### Add / Edit stickers
+All sticker IDs are stored in `app/stickers.txt`, and will be randomly picked when handler is triggered. To update the sticker sets, you will need to get the sticker ID by sending stickers to the created bot. Visit `https://api.telegram.org/bot<BOT_TOKEN>/getUpdates`, stickers ID can be found in the API reponse node `result[n]['message']['sticker']['file_id']`. Re-deployment is needed for changes to take effect.
 
 ##### Edit bot schedule
 
@@ -123,7 +126,7 @@ Run the following command inside virtual environment:
 . load-environment-variables.sh
 
 # Execute handler
-python -c "import handler; handler.send_message('', '')"
+serverless invoke local -f cron
 ```
 
 #### Others
