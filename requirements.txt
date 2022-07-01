@@ -1,2 +1,2 @@
 python-telegram-bot==13.13
-pylint==2.11.1
+pylint==2.14.4
