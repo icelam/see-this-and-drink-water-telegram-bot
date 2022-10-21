@@ -31,14 +31,14 @@
 ##### NPM
 
 ```bash
-npm install serverless@2.63.0 --global
+npm install serverless@3 --global
 npm install
 ```
 
 ##### Yarn
 
 ```bash
-yarn global add serverless@2.63.0
+yarn global add serverless@3
 yarn
 ```
 
